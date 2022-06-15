@@ -15,7 +15,7 @@ function App() {
             <h2>Hello from App component</h2>
             <h3>Hello {name}</h3>
             <h4>{obj.age}</h4>
-            <p>{JSON.stringify(obj)}</p>
+            <p style={{ color: "red" }}>{JSON.stringify(obj)}</p>
             <a href={link_} target="_blank">
                 Visit this video
             </a>
