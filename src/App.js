@@ -11,10 +11,21 @@ function App() {
 
     let [name, setName] = useState("Ducmanhx4");
     const [address, setAddress] = useState("");
+    const [todos, setTodos] = useState([
+        { id: "todo1", title: "watching television" },
+        { id: "todo2", title: "doing homework" },
+        { id: "todo3", title: "paging liu liu" },
+    ]);
 
     let handleEventClick = (event) => {
-        setName(address);
-        console.log(">>> click me ", address);
+        if (!address) {
+            alert("empty input");
+            return;
+        }
+        // hook not merge state
+        let newTodo = { id: "", title: address };
+        setTodos([...todos, newTodo]);
+        setAddress("");
     };
 
     let handleChangeInput = (event) => {
@@ -28,6 +39,16 @@ function App() {
             <img src={logo} className="App-logo" />
             <h2>App component</h2>
             <h3>Hello {name}</h3>
+            <div className="todos-container">
+                {todos.map((todo) => {
+                    return (
+                        <li key={todo.id} className="todo-child">
+                            {" "}
+                            {todo.title}
+                        </li>
+                    );
+                })}
+            </div>
             <input
                 type="text"
                 value={address}
