@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./components/Nav";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Todo from "./components/Todo";
 
 function App() {
@@ -16,6 +16,14 @@ function App() {
         { id: "todo3", title: "paging liu liu", type: "x4" },
         { id: "todo4", title: "reading book", type: "x4" },
     ]);
+
+    // chay bat cu khi nao Giao dien re-Render
+    useEffect(() => {
+        console.log("run useEffect");
+    }, [address]);
+    useEffect(() => {
+        console.log("run useEffect todos");
+    }, [todos]);
 
     const handleEventClick = (event) => {
         if (!address) {
