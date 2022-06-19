@@ -4,11 +4,12 @@ import moment from "moment";
 
 const Covid = () => {
     const [dataCovid, setDataCovid] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
 
     // componentDidMount
     useEffect(async () => {
-        setTimeout(async () => {
+        try {
             let res = await axios.get(
                 "https://api.covid19api.com/country/vietnam/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z"
             );
@@ -25,8 +26,12 @@ const Covid = () => {
             }
 
             setDataCovid(data);
-            setLoading(false);
-        }, 3000);
+            setIsLoading(false);
+            setIsError(false);
+        } catch (error) {
+            setIsError(true);
+            setIsLoading(false);
+        }
     }, []);
 
     return (
@@ -43,7 +48,8 @@ const Covid = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {loading === false &&
+                    {isError === false &&
+                        isLoading === false &&
                         dataCovid &&
                         dataCovid.length > 0 &&
                         dataCovid.map((item) => {
@@ -56,10 +62,17 @@ const Covid = () => {
                                 </tr>
                             );
                         })}
-                    {loading === true && (
+                    {isLoading === true && (
                         <tr>
-                            <td colspan="5" style={{ textAlign: "center" }}>
+                            <td colSpan="5" style={{ textAlign: "center" }}>
                                 Loading...
+                            </td>
+                        </tr>
+                    )}
+                    {isError === true && (
+                        <tr>
+                            <td colSpan="5" style={{ textAlign: "center" }}>
+                                Something wrong...
                             </td>
                         </tr>
                     )}
