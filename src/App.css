@@ -15,13 +15,13 @@
 }
 
 .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
+    background-color: #595a5a;
+    /* min-height: 100vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
     /* justify-content: center; */
-    font-size: calc(10px + 2vmin);
+    /* font-size: calc(10px + 2vmin); */
     color: white;
 }
 
@@ -36,4 +36,34 @@
     to {
         transform: rotate(360deg);
     }
+}
+
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    /* margin: 0 15px; */
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #545454;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04aa6d;
+    color: white;
 }

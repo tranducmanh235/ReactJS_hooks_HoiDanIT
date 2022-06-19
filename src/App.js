@@ -3,6 +3,7 @@ import "./App.css";
 import Nav from "./components/Nav";
 import { useState, useEffect } from "react";
 import Todo from "./components/Todo";
+import Covid from "./components/Covid";
 
 function App() {
     // let name = "Tdmx4";
@@ -19,10 +20,10 @@ function App() {
 
     // chay bat cu khi nao Giao dien re-Render
     useEffect(() => {
-        console.log("run useEffect");
+        // console.log("run useEffect");
     }, [address]);
     useEffect(() => {
-        console.log("run useEffect todos");
+        // console.log("run useEffect todos");
     }, [todos]);
 
     const handleEventClick = (event) => {
@@ -59,7 +60,7 @@ function App() {
                 <h2>App component</h2>
                 <h3>Hello {name}</h3>
 
-                <Todo
+                {/* <Todo
                     todos={todos}
                     title={"All todos"}
                     deleteDataTodo={deleteDataTodo}
@@ -79,8 +80,9 @@ function App() {
                     onClick={(event) => handleEventClick(event)}
                 >
                     Click
-                </button>
+                </button> */}
             </header>
+            <Covid />
         </div>
     );
 }
