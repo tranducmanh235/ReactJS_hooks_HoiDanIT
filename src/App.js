@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import { useState, useEffect } from "react";
 import Todo from "./components/Todo";
 import Covid from "./components/Covid";
+import { CountDown, NewCountDown } from "./components/CountDown";
 
 function App() {
     // let name = "Tdmx4";
@@ -52,11 +53,22 @@ function App() {
         setTodos(currentTodos);
     };
 
+    const onTimeup = () => {
+        alert("times up");
+    };
+
     return (
         <div className="App">
             <header className="App-header">
                 <Nav />
                 <img src={logo} className="App-logo" />
+
+                <CountDown onTimeup={onTimeup} />
+
+                <span>------------------------------</span>
+
+                <NewCountDown onTimeup={onTimeup} />
+
                 <h2>App component</h2>
                 <h3>Hello {name}</h3>
 

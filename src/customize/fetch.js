@@ -34,7 +34,7 @@ const useFetch = (url) => {
             setIsError(true);
             setIsLoading(false);
         }
-    }, []);
+    }, [url]);
 
     return { data, isLoading, isError };
 };
